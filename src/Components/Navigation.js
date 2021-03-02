@@ -1,16 +1,27 @@
 import React, { Component } from "react";
-import Topic from "./Topic";
-import Search from "./Search";
+import { Route, NavLink, Redirect } from "react-router-dom";
+//import Topic from "./Topic";
+//import Search from "./Search";
 
 export default class Navigation extends Component {
+  state = {
+    searchTerm: "",
+  };
+
   render() {
     return (
-      <div>
-        <div className="main-header">
-          <h1>This is a header</h1>
-          <Search />
-          <Topic />
-        </div>
+      <div className="main-nav">
+        <ul>
+          <li>
+            <NavLink to="/search/trees">Trees</NavLink>
+          </li>
+          <li>
+            <NavLink to="/search/space">Space</NavLink>
+          </li>
+          <li>
+            <NavLink to="/search/arctic">Arctic</NavLink>
+          </li>
+        </ul>
       </div>
     );
   }
