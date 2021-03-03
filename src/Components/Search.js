@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 
-export default class Search extends Component {
+class Search extends Component {
   state = {
     searchTerm: "",
   };
@@ -15,8 +15,8 @@ export default class Search extends Component {
     this.props.onSearch(this.state.searchTerm);
     let term = this.query.value;
     let path = `search/${term}`;
-    this.props.history.push(path)
     e.currentTarget.reset();
+    this.props.history.push(path)  // how does using this make the search results not work?
   }
 
   render() {
@@ -28,3 +28,5 @@ export default class Search extends Component {
     );
   }
 }
+
+export default withRouter(Search);
