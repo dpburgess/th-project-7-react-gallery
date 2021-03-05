@@ -14,9 +14,9 @@ class Search extends Component {
     e.preventDefault();
     this.props.onSearch(this.state.searchTerm);
     let term = this.query.value;
-    let path = `search/${term}`;
+    let path = `/search/${term}`;
+    this.props.history.push(path)
     e.currentTarget.reset();
-    this.props.history.push(path)  // how does using this make the search results not work?
   }
 
   render() {

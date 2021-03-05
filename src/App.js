@@ -106,7 +106,8 @@ render() {
             <Route path="/search/trees" render={() => <Results query={this.state.treeImages} />} />
             <Route path="/search/space" render={() => <Results query={this.state.spaceImages} />} />
             <Route path="/search/arctic" render={() => <Results query={this.state.arcticImages} />} />
-            <Route path="/search/:term" render={() => <Results onChange={this.performSearch} />} /> {/*maybe this goes in the Results component*/}
+            <Route path="/search/:term" render={() => <Results query={this.state.images}/>} />
+            {/*onChange={this.performSearch}*/}
             <Route component={NotFound} />
 
             {/*<Route path="/about" render={() => <About title="About" />} /> */}
