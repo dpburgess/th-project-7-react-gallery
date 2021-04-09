@@ -1,37 +1,78 @@
-import React from "react";
+import React, { Component } from "react";
 import Result from "./Result"
 import NoResults from "./NoResults"
-import { useParams } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-const Results = (props) => {
-  const { term } = useParams();
-  console.log(term);
+class Results extends Component {
+  // captureUrl = () => {
+  //   let pathname = window.location.href;
+  //   this.setState({
+  //     path: pathname
+  //   });
+  // }
 
-  const collection = props.query;
-  console.log(collection);
-  
-  //const value = props.match.params.query;
-  //console.log(props);
-  
-  //let items = props.onChange(term)
-  //console.log(value);
-  let images;
-  if (collection.length > 0) {
-  images = collection.map((image) => (
-    <Result key={image.id} url={image} />
-  ));
-  } else {
-    images = <NoResults />
+
+  // componentDidUpdate(prevProps, prevState){
+  //   console.log(prevProps);
+  //   console.log(prevState);
+  //   console.log(this.props);
+  //   if (prevProps.match.url !== this.props.match.url) {
+  //     let term = this.props.match.params.term
+  //     this.props.search(term);
+  //   }
+    
+  //   // do I need to update state from here back to app.js?
+  // }
+
+  render() {
+    //this.captureUrl();
+    //const { term } = useParams();
+    const collection = this.props.query;
+    //console.log('term ' + term);
+
+    let images;
+    if (collection.length > 0) {
+    images = collection.map((image) => (
+      <Result key={image.id} url={image} />
+    ));
+    } else {
+      images = <NoResults />
+    }
+
+    console.log(images);
+      return (
+      <div className="photo-container">
+        <ul className="image-list">{images}</ul>;
+      </div>
+      )
   }
 
-  console.log(images);
-    return (
-    <div className="photo-container">
-      <ul className="image-list">{images}</ul>;
-    </div>
-    )
+
 }
 
-export default Results;
-//export default withRouter(Results);
+// could use useEffect and the new state method
+// to save the url path and compare the new url to the previous one
+// 
+
+// const Results = (props) => {
+//   const collection = props.query;
+//   console.log(collection);
+  
+//   let images;
+//   if (collection.length > 0) {
+//   images = collection.map((image) => (
+//     <Result key={image.id} url={image} />
+//   ));
+//   } else {
+//     images = <NoResults />
+//   }
+
+//   console.log(images);
+//     return (
+//     <div className="photo-container">
+//       <ul className="image-list">{images}</ul>;
+//     </div>
+//     )
+// }
+
+export default withRouter(Results);
