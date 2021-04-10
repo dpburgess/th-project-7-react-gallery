@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-//import Topic from "./Topic";
-//import Search from "./Search";
 
 export default class Navigation extends Component {
 
