@@ -20,15 +20,9 @@ class App extends Component {
     arcticImages: [],
   }
 
-  captureUrl(){
-        let pathname = window.location.href;
-        this.setState({
-        path: pathname
-        });
-  }
-
   componentDidMount(){
 
+    // these 4 functions run when the component mounts and they update the above state to include the results from the API queries
     this.performSearch();
     this.searchTrees();
     this.searchSpace();
@@ -89,10 +83,6 @@ class App extends Component {
     .catch((error) => {
       console.log("Error fetching and parsing data", error);
     })
-  }
-
-  acceptAWord = (word) => {
-    return word;
   }
 
 render() {
