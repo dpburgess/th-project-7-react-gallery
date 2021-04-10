@@ -104,6 +104,10 @@ class App extends Component {
     })
   }
 
+  acceptAWord = (word) => {
+    return word;
+  }
+
 render() {
   //this.captureUrl();  cant use this or else there will be an infinite loop
     return (
@@ -130,18 +134,17 @@ render() {
                 : <Results query={this.state.images}/>
               }
             </Route>
-            <Route path="/search/:term"> 
             <Route path="/search/trees" render={() => <Results query={this.state.treeImages} />} />
             <Route path="/search/space" render={() => <Results query={this.state.spaceImages} />} />
             <Route path="/search/arctic" render={() => <Results query={this.state.arcticImages} />} />
-            
-              {
+            <Route path="/search/:term"  render={() => <Results query={this.state.arcticImages} />} />
+              {/*
                 // this only works after the API has been hit for images, so I can pass them to Results via state.images
                 (this.state.loading)
                 ? <div><p>Loading...</p></div>
-                : <Results query={this.state.images}/>
-              }
-            </Route>   
+                : <Results idea={this.acceptAWord('yes')} query={this.state.images}/>
+              
+            </Route>/*}   
             {/*onChange={this.performSearch}*/}
             <Route component={NotFound} />
 
